@@ -101,8 +101,8 @@ with ui.layout_columns():
             filtered_df,
             x=selected_attribute,
             nbins=bin_count,
-            title=f"Penguins {selected_attribute} Histogram",
-            color_discrete_sequence=["orange"], 
+            title="Plotly Histogram",
+            color="species", 
         )
         fig.update_traces(marker_line_color="black", marker_line_width=2)
         return fig
@@ -114,9 +114,8 @@ with ui.layout_columns():
         def seaborn_plot():
             filtered_df = penguins_df[
                 penguins_df["species"].isin(input.selected_species_list())]
-            
             selected_attribute = input.selected_attribute()
-            ax=sns.histplot(data=filtered_df,x=selected_attribute,bins=input.seaborn_bin_count())
+            ax=sns.histplot(data=filtered_df,x=selected_attribute,bins=input.seaborn_bin_count(),hue="species", multiple="stack")
             ax.set_title("Seaborn Histogram")
             ax.set_xlabel(selected_attribute)
             ax.set_ylabel("Count")
@@ -155,4 +154,3 @@ with ui.card(full_screen=True):
             title="Attriubte Distribution by Species",
             color="species")
         return fig
-
