@@ -152,8 +152,7 @@ with ui.card(full_screen=True):
             x="species",
             box=True,                
             points="all",           
-            title="Body Mass Distribution by Species",
+            title="Attriubte Distribution by Species",
             color="species")
         return fig
-
 
