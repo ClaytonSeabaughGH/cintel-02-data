@@ -36,6 +36,7 @@ with ui.layout_columns():
         def penguinsgrid_df():
             return render.DataGrid(penguins_df, filters=False, selection_mode="row")
 
+
 #-----------------------
 # Define User Interface
 #------------------------   
@@ -144,9 +145,10 @@ with ui.card(full_screen=True):
     ui.card_header("Plotly Violinplot: Species")
     @render_plotly
     def line_plot():
+        selected_attribute = input.selected_attribute()
         fig = px.violin(
             penguins_df,
-            y="body_mass_g",
+            y=selected_attribute,
             x="species",
             box=True,                
             points="all",           
